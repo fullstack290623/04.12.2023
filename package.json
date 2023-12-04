@@ -19,6 +19,8 @@
     "mocha": "^10.2.0",
     "pg": "^8.11.3",
     "should": "^13.2.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
     "winston": "^3.11.0"
   }
 }
