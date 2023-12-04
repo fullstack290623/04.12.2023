@@ -4,6 +4,12 @@ const dal = require('../dals/dal')
 
 // '/api/employee'
 // GET 
+router.get('/hello', async (request, response) => {
+    response.json({'status': 'success'})
+})
+
+// '/api/employee'
+// GET 
 router.get('/', async (request, response) => {
     const employees = await dal.get_all()
     response.json(employees)
