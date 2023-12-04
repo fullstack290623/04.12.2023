@@ -16,7 +16,7 @@ router.get('/', async (request, response) => {
     response.json(employees)
     }
     catch (e) {
-        response.json({'error': e})
+        response.json({'error': JSON.stringify(e)})
     }
 })
 // GET by ID
