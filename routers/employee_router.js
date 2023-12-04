@@ -11,8 +11,13 @@ router.get('/hello', async (request, response) => {
 // '/api/employee'
 // GET 
 router.get('/', async (request, response) => {
+    try {
     const employees = await dal.get_all()
     response.json(employees)
+    }
+    catch (e) {
+        response.json({'error': e})
+    }
 })
 // GET by ID
 router.get('/:id', async (request, response) => {
