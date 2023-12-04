@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const dal = require('../dals/dal')
+const logger = require('../logger/my_logger')
 
 /**
 *  @swagger
@@ -67,6 +68,7 @@ router.get('/', async (request, response) => {
         response.json(employees)
     }
     catch (e) {
+        logger.error(`Error during get_all ${JSON.stringify(e)}`)
         response.status(500).json({ 'error': JSON.stringify(e) })
     }
 })
@@ -109,6 +111,7 @@ router.get('/:id', async (request, response) => {
         response.json(user)
     }
     else {
+        logger.error(`Error during get/:id not found`)
         response.status(404).json({ "error": `cannot find user with id ${user_id}` })
     }
 })
@@ -168,6 +171,7 @@ router.post('/', async (request, response) => {
         response.status(201).json(result)
     }
     catch (e) {
+        logger.error(`Error during post ${JSON.stringify(e)}`)
         response.status(400).json({ 'Error': e })
     }
 })
@@ -190,6 +194,7 @@ router.put('/:id', async (request, response) => {
         }
     }
     catch (e) {
+        logger.error(`Error during put ${JSON.stringify(e)}`)
         response.status(400).json({ 'Error': e })
     }
 })
@@ -208,6 +213,7 @@ router.patch('/:id', async (request, response) => {
         response.status(200).json({ result })
     }
     catch (e) {
+        logger.error(`Error during patch ${JSON.stringify(e)}`)
         response.status(400).json({ 'Error': e })
     }
 })
@@ -243,6 +249,7 @@ router.delete('/:id', async (request, response) => {
         response.status(204).json({ result })
     }
     catch (e) {
+        logger.error(`Error during delete ${JSON.stringify(e)}`)
         response.status(400).json({ 'Error': e })
     }
 })
